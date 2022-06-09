@@ -125,16 +125,16 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-REST_FRAMEWORK = {
+# REST_FRAMEWORK = {
     
-     'DEFAULT_SCHEMA_CLASS':
-        'rest_framework.schemas.coreapi.AutoSchema',
-    'DEFAULT_PAGINATION_CLASS':
-        'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 20,
-    'DEFAULT_FILTER_BACKENDS': [
-        'rest_framework.filters.OrderingFilter',
-        'url_filter.integrations.drf.DjangoFilterBackend',
-        # 'rest_framework.filters.SearchFilter',
-    ]
-}
+#      'DEFAULT_SCHEMA_CLASS':
+#         'rest_framework.schemas.coreapi.AutoSchema',
+#     'DEFAULT_PAGINATION_CLASS':
+#         'rest_framework.pagination.LimitOffsetPagination',
+#     'PAGE_SIZE': 20,
+#     'DEFAULT_FILTER_BACKENDS': [
+#         'rest_framework.filters.OrderingFilter',
+#         'url_filter.integrations.drf.DjangoFilterBackend',
+#         # 'rest_framework.filters.SearchFilter',
+#     ]
+# }
