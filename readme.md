@@ -2,7 +2,7 @@
 
 
 ## My Approach
-In this project, I have used Python Django Rest Framework. I have defined a model named Report and loaded the model with all the instances from both the clouds. An api with endpoint /report is defined to return the list of running instances grouped by teams.<br/>
+In this project, I have used Python Django Rest Framework. I have defined a model named Report and loaded the model with all the instances from both the clouds. An api with endpoint **/report** is defined to return the list of running instances grouped by teams.<br/>
 
 
 ## Setting up the envrionment
