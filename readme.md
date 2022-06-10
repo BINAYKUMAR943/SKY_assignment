@@ -6,11 +6,12 @@ In this project, I have used Python Django Rest Framework. I have defined a mode
 
 
 ## Setting up the envrionment
-Create a virtual environment, install all the required packages mentioned in the requirements.txt file
+Create a virtual environment, activate the same, and install all the required packages mentioned in the requirements.txt file using below commands.
 
 ```
 
 virtualenv .venv
+.venv/Scripts/activate
 pip3 install -r requirements.txt
 
 ```
@@ -25,6 +26,6 @@ python manage.py runserver
 
 ```
 
-This will start the local server running on port 8000. You will get the required output in the url http://127.0.0.1:8000/report/
+This will start the local server running on port 8000. Access the report using api on http://127.0.0.1:8000/report/
 
   
