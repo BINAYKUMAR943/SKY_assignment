@@ -2,12 +2,8 @@ from django.http import JsonResponse,HttpResponse
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 import requests
-import json
 import math
 from report.models import Report
-from rest_framework.viewsets import ModelViewSet
-from django.db.models import Count
-
 from .serializers import ReportSerializer
 
 
@@ -18,7 +14,6 @@ def load_data_to_database(request,**kwargs):
         report=Report(id=instance['ID'],team=instance['TeamName'],machine=instance['Machine'],region=instance['DeployedRegion'],ip=instance['IPAddress'],state=instance['State'],cloud_name="cloud1")
         report.save()
     cloud2_instances = requests.get('http://127.0.0.1:9002/cloud/instances').json()
-    print(cloud2_instances)
     pages=math.ceil(cloud2_instances['total']/cloud2_instances['count'])
     for page in range(1,pages):
         cloud2_instances = requests.get(f'http://127.0.0.1:9002/cloud/instances?page={page}').json()
@@ -31,20 +26,20 @@ def load_data_to_database(request,**kwargs):
 
 @api_view(["GET"])
 def ReportViewSet(request,**kwargs):    
-    dict={}
+    report={}
     teams=Report.objects.values_list('team', flat=True).distinct()
     for team in teams:
-        dict[team]={}
+        report[team]={}
         instances=[]
-        queyset=Report.objects.filter(team=team)
-        for report in queyset:
-            if report.state=='running':
-                serializer=ReportSerializer(report)
+        queryset=Report.objects.filter(team=team)
+        for instance in queryset:
+            if instance.state=='running':
+                serializer=ReportSerializer(instance)
                 instances.append(serializer.data)
-        dict[team]['count']=len(instances)
-        dict[team]['instances']=instances            
+        report[team]['count']=len(instances)
+        report[team]['instances']=instances            
 
-    return JsonResponse(dict)
+    return JsonResponse(report)
 
 
     
